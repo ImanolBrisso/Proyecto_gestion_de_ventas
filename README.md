@@ -8,4 +8,18 @@
 
 ## Estructura 
 
--
+### Modulos
+
+- Ingreso de Sesion: Contiene y verifica que sea correcta la cuenta del Usuario.
+- Usuarios: Administración y creación de cuentas personales. 
+- Gestor de Tickets: Genera valores aleatores de una fecha, asiento y codigo para comprobar que sea valido el ticket (entrada).
+
+## Manejo y plataformas utilizadas para los Encuentros
+
+- Discord y Zoom. Nos asignamos diferentes tareas a trabajar y se generaron intercambio de ideas para realizar modificaciones en el proyecto.
+
+## Colaboradores
+
+- Imanol
+- Juan
+
