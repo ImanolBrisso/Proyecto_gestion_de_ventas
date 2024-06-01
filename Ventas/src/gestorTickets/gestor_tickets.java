@@ -8,7 +8,7 @@ public class gestor_tickets {
 
         public static void main(String[] args) {
 
-            // Generador de fecha aleatoria
+            // Generador de fecha aleatoria - pendiente a modificar para especificar
 
             // Dia
             Random dia = new Random();
