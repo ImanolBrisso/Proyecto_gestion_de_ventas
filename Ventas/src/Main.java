@@ -155,9 +155,11 @@ public class Main {
                 case 4:
                     usuarioActual = null;
                     System.out.println("Has cerrado tu sesión correctamente.");
+                    System.out.println("---------------------");
                     break;
                 default:
                     System.out.println("Opción Inválida. Verifique nuevamente");
+                    System.out.println("---------------------"); 
             }
         } while (opcion != 4);
     }
