@@ -49,6 +49,7 @@ public class Main {
         entradas.add(new Entrada(entradaIdCounter++, "Porto vs Benfica", "16-05-2024", 100.00, true));
         entradas.add(new Entrada(entradaIdCounter++, "Nacional vs Peñarol", "17-05-2024", 80.00, true));
         System.out.println("Se encuentran disponibles entradas para estos mismos partidos");
+        // modificar fechas para que sean vigentes y correlativas a la fecha actual
     }
 
     private static void registrarUsuario(Scanner scanner) {
@@ -159,7 +160,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Opción Inválida. Verifique nuevamente");
-                    System.out.println("---------------------"); 
+                    System.out.println("---------------------");
             }
         } while (opcion != 4);
     }
