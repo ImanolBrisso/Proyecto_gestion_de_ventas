@@ -20,15 +20,15 @@
 
 - Inicio de Sesión: Se ingresa unicamente con el correo y la contraseña, una vez que se confirman estos mismos datos. Se le da la bienvenida al usuario con el nombre que ingreso previamente en el registro confirmando que funcione correctamente.
 
--Partidos disponibles: El usuario visualizará los distintos partidos disponibles con sus especificaciones para seleccionar el que desee posteriormente.
+- Partidos disponibles: El usuario visualizará los distintos partidos disponibles con sus especificaciones para seleccionar el que desee posteriormente.
 
--Venta y Compra de Entradas: El cliente opta por la opción que desee seleccionar y procede a comprar la entrada obteniendo así la ID de la misma para saber a que partido corresponde.
+- Venta y Compra de Entradas: El cliente opta por la opción que desee seleccionar y procede a comprar la entrada obteniendo así la ID de la misma para saber a que partido corresponde.
 
--Historial o Visualización de Compras: Se le detallará al usuario la compra que realizó con el ID correspondiente para diferenciarlo y la fecha en el que realizó la misma para comprobar que sea vigente.
+- Historial o Visualización de Compras: Se le detallará al usuario la compra que realizó con el ID correspondiente para diferenciarlo y la fecha en el que realizó la misma para comprobar que sea vigente.
 
--Cierre de Sesión: Se cierra la sesión del usuario para que no quede guardado su registro y para generar mayor seguridad.
+- Cierre de Sesión: Se cierra la sesión del usuario para que no quede guardado su registro y para generar mayor seguridad.
 
--Salida del Sistema: Se finaliza el programa para dejar de interactuar con el usuario.
+- Salida del Sistema: Se finaliza el programa para dejar de interactuar con el usuario.
 
 ## Manejo y plataformas utilizadas para los Encuentros
 
