@@ -14,6 +14,7 @@ public class Usuario {
         this.correo = correo;
         this.contraseña = contraseña;
         this.rol = rol;
+        // El rol de administrador ingresado en el main puede ser modificado o eliminado
     }
 
     // Se generan los getters y setters

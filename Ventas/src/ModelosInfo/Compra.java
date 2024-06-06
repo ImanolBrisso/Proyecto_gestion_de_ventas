@@ -14,7 +14,7 @@ public class Compra {
         this.fechaCompra = fechaCompra;
     }
 
-    // Getters y Setters
+    // Se generan los Getters y Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public int getUsuarioId() { return usuarioId; }

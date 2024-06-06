@@ -7,6 +7,7 @@ public class Entrada {
     private double precio;
     private boolean disponibilidad;
 
+    // Se ingresa el constructor
     public Entrada(int id, String partido, String fecha, double precio, boolean disponibilidad) {
         this.id = id;
         this.partido = partido;

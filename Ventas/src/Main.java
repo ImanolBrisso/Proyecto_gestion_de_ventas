@@ -1,5 +1,5 @@
 import ModelosInfo.*;
-// pendiente importar gestor de tickets a modificar
+// pendiente importar gestor de tickets que se modificará para hacer posiblemente un envio de código aleatorio para la entrada de los usuarios
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,9 +24,10 @@ public class Main {
             System.out.println("1. Registrarme");
             System.out.println("2. Inicio de Sesión");
             System.out.println("3. Salir...");
+            // en la consola se debe dar al salir para finalizar la interacción (no basta con cerrar sesión)
             System.out.print("Elija una opción disponible: ");
             opcion = scanner.nextInt();
-            scanner.nextLine();  // Consumir la nueva línea
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -45,11 +46,11 @@ public class Main {
     }
 
     private static void crearEntradas() {
-        entradas.add(new Entrada(entradaIdCounter++, "Arsenal vs Liverpool", "15-05-2024", 150.00, true));
-        entradas.add(new Entrada(entradaIdCounter++, "Porto vs Benfica", "16-05-2024", 100.00, true));
-        entradas.add(new Entrada(entradaIdCounter++, "Nacional vs Peñarol", "17-05-2024", 80.00, true));
+        entradas.add(new Entrada(entradaIdCounter++, "Arsenal vs Liverpool", "15-06-2024", 150.00, true));
+        entradas.add(new Entrada(entradaIdCounter++, "Porto vs Benfica", "16-06-2024", 100.00, true));
+        entradas.add(new Entrada(entradaIdCounter++, "Nacional vs Peñarol", "17-06-2024", 80.00, true));
         System.out.println("Se encuentran disponibles entradas para estos mismos partidos");
-        // modificar fechas para que sean vigentes y correlativas a la fecha actual
+        // Se crea el contador ID que comienza desde el 1 en adelante para el conteo y selección de los diferentes partidos (va incrementando)
     }
 
     private static void registrarUsuario(Scanner scanner) {
@@ -66,6 +67,7 @@ public class Main {
         usuarios.add(usuario);
         System.out.println("¡Se ha registrado correctamente!.");
         System.out.println("---------------------");
+        // se dejan varios guiones de separaciones para el uso y practica en la consola al interactuar - no se hizo salto de línea
     }
 
     private static void iniciarSesion(Scanner scanner) {
@@ -76,11 +78,17 @@ public class Main {
         String contraseña = scanner.nextLine();
         // dar un nuevo enter para proseguir al interactuar en el scanner
 
-        // verificar correctamente la opcion
+        /*
+         verificar correctamente la opcion
+         En la siguiente parte se busca un usuario dentro del modulo usuarios donde luego al interactuar en la consola
+         sera verificado unicamente con la solicitud del correo y la contraseña, una vez que se encuentre a ese usuario
+         le dará la bienvenida con su nombre sino dará como resultado "nulo".
+         */
         usuarioActual = usuarios.stream()
                 .filter(u -> u.getCorreo().equals(correo) && u.getContraseña().equals(contraseña))
                 .findFirst()
                 .orElse(null);
+        // no se dispone de un valor inicial, no se apunta a ningun valor - es nulo.
 
         if (usuarioActual != null) {
             System.out.println("¡Su inicio de sesión fue exitoso!. Bienvenido, " + usuarioActual.getNombre());
@@ -107,7 +115,7 @@ public class Main {
             opcion = scanner.nextInt();
             scanner.nextLine();
 
-            // realizar salto de linea
+            // se debe verificar rol de administrador y su menú
 
             switch (opcion) {
                 case 1:
@@ -128,20 +136,20 @@ public class Main {
             }
         } while (opcion != 4);
     }
-
+    // se implementa el menu a nivel usuario
     private static void menuUsuario(Scanner scanner) {
         int opcion;
         do {
             System.out.println("Menú Usuario");
             System.out.println("1. Ver Partidos Disponibles");
-            System.out.println("2. Comprar Entrada"); // se podría crear una alternativa para ingresar datos bancarios de confirmación
+            System.out.println("2. Comprar Entrada");
             System.out.println("3. Ver Mis Compras de mis Tickets");
             System.out.println("4. Cerrar Sesión");
             System.out.print("Seleccione una opción correcta: ");
             opcion = scanner.nextInt();
             scanner.nextLine();
 
-            // recordar salto de línea y consultar
+            // recordar salto de línea o guiones.
 
             switch (opcion) {
                 case 1:
@@ -173,9 +181,10 @@ public class Main {
         String fecha = scanner.nextLine();
         System.out.print("Precio: ");
         double precio = scanner.nextDouble();
-        boolean disponibilidad = true;  // se verifica que hay disponibilidad con el true si no la hay será false - hacer un partido de prueba sin entradas
+        boolean disponibilidad = true;
+        // se verifica que hay disponibilidad con el true si no la hay será false - hacer un partido de prueba sin entradas
 
-        Entrada entrada = new Entrada(entradaIdCounter++, partido, fecha, precio, disponibilidad);
+        Entrada entrada = new Entrada(entradaIdCounter++, partido, fecha, precio, disponibilidad); // fecha de partidos actualizadas
         entradas.add(entrada);
         System.out.println("Entrada creada exitosamente.");
     }
@@ -205,6 +214,8 @@ public class Main {
         } else {
             System.out.println("No se ha logrado localizar la entrada de manera correcta. Verifique nuevamente.");
         }
+
+        // Verificar sistema de modificación de entradas para el rol de administrador (a modificar o eliminar).
     }
 
     private static void eliminarEntrada(Scanner scanner) {
@@ -237,7 +248,7 @@ public class Main {
         System.out.println("Compra de Entrada");
         System.out.print("ID de la Entrada: ");
         int entradaId = scanner.nextInt();
-        scanner.nextLine();  // Consumir la nueva línea
+        scanner.nextLine();
 
         Entrada entrada = entradas.stream().filter(e -> e.getId() == entradaId && e.isDisponibilidad()).findFirst().orElse(null);
         if (entrada != null) {
@@ -255,6 +266,11 @@ public class Main {
     private static void verMisCompras() {
         System.out.println("Mis Compras");
         compras.stream().filter(c -> c.getUsuarioId() == usuarioActual.getId()).forEach(compra -> {
+            /*
+             Al convertir compras en un stream permite realizar modificaciones.
+             Permite que el usuario que ingreso a su cuenta especificamente pueda visualizar a disposición
+             sus propias compras bajo filtros (Id).
+             */
             System.out.println("ID de Compra: " + compra.getId());
             System.out.println("ID de Entrada: " + compra.getEntradaId());
             System.out.println("Fecha de Compra: " + compra.getFechaCompra()); // verificar fecha ingresada actualizada al día actual (de hoy)
